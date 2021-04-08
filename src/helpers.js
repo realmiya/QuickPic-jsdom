@@ -404,65 +404,6 @@ export const showProfile=(username,userToken,CurrentUserName)=>{
     })
 }
 
-//
-// export function LeaveCommentPart(newDivPost,userToken,CurrentUserName,newDivComment,LenOfComment, newDivCommentBlock,result,i){
-//
-//     const leaveComment=document.createElement("section");
-//     newDivPost.appendChild(leaveComment);
-//     // <input type="text" id="description_text" />
-//     const content=document.createElement("input")
-//     content.typeName="text";
-//     leaveComment.appendChild(content);
-//
-//     const CommentBTN=document.createElement("button")
-//     CommentBTN.innerText="Comment";
-//     CommentBTN.className="btn btn-primary";
-//
-//     leaveComment.appendChild(CommentBTN);
-//
-//     CommentBTN.addEventListener("click", ()=>{
-//         const commentBody={
-//             "comment": content.value
-//         }
-//         const PUTComment = fetch("http://localhost:5000/post/comment/?id="+ result[i]["id"], {
-//             method: "PUT",
-//             headers: {
-//                 "Accept": "application/json",
-//                 "Content-Type": "application/json",
-//                 "Authorization": "Token " + userToken,// Your Authorization Token in the form ‘Token <AUTH_TOKEN>’
-//             },
-//             body:JSON.stringify(commentBody),
-//         }).then(data=>{
-//             if(data.status===200) {
-//                 alert("You have left your comment successfully!");
-//
-//
-//                 const CommentAuthorDiv=document.createElement("div");
-//                 CommentAuthorDiv.innerText=CurrentUserName;
-//
-//                 const commentDiv=document.createElement("div");
-//                 commentDiv.innerText="comment: "+ content.value;
-//
-//                 newDivCommentBlock.appendChild(commentDiv);
-//                 newDivCommentBlock.appendChild(CommentAuthorDiv);
-//                 LenOfComment++;
-//
-//
-//                 newDivComment.innerText="💬 "+LenOfComment+" comments";
-//                 // newDivComment.className="badge bg-primary";
-//
-//             }else if(data.status===400){
-//                 alert("Please input your comment.")
-//
-//             }else{throw new Error("Some error happened")}
-//         }).catch((error) => {
-//             console.log( error);
-//         })
-//     })
-//
-// }
-
-
 
 
 export function LikePartFunction(ResData,n, newDivPost,userToken,CurrentUserName ){
@@ -485,10 +426,7 @@ export function LikePartFunction(ResData,n, newDivPost,userToken,CurrentUserName
 
     const likerListPart=document.createElement("div");
     LikePart.appendChild(likerListPart);
-
-    // const likerTitle=document.createElement("div");
-    // likerTitle.innerText="People like this post:";
-    // likerListPart.appendChild(likerTitle);
+    
 
     if(lenOflikers!==0) {
         // newDivLikDATA.className= "btn btn-primary";

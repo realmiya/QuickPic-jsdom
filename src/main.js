@@ -360,7 +360,6 @@ const ValidPassword=(PasswordDiv)=>{
 
 
 
-
 const InfiniteScroll=()=>{
     console.log(window.innerHeight);
 
@@ -402,7 +401,6 @@ document.getElementById("CreateBtn").addEventListener("click" , ()=> {
     document.getElementById("dashboard").style.display="none";
     // change to create account page
 });
-
 
 
 
