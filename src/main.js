@@ -14,6 +14,9 @@ import {
 // This url may need to change depending on what port your backend is running
 // on.
 
+
+
+
 let userToken = undefined;
 let CurrentUserName= undefined;
 let p=0;
@@ -117,13 +120,6 @@ document.getElementById('ImageUpload').addEventListener("change",()=>{
 
 
 
-
-
-
-
-
-
-
 document.getElementById("closePostAction").onclick=function(){
     document.getElementById("StoryScreen").style.display = "none";
 }
@@ -183,36 +179,11 @@ const loadFeed=(p,n)=>{
 
 
                 }//这个胡括号是给每个post的statement
-                // new Promise(resolve => {
 
 
 
-
-
-
-
+//for notification
                 let Oldposts=[];
-                // const currentUser = FetchUserInfo(CurrentUserName, userToken);
-                // currentUser.then(data => {
-                //     data.json().then(res => {
-                //         const followingList = res["following"];
-                //         const len = followingList.length
-                //
-                //         for (let i = 0; i < len; i++) {
-                //             const result = FetchInfoViaID(followingList[i], userToken)
-                //             result.then(data=>{
-                //                 data.json().then(res=>{
-                //                     Oldposts.push(...res["posts"]);//... makes array=>to be a list
-                //
-                //                 }).then(res=>{for(let n=0;n<Oldposts.length;n++){
-                //                     console.log(Oldposts)
-                //                 }})
-                //             })
-                //         }
-                //     })
-                // })
-
-
                 setInterval(function () {
                     const posts=[];
                     const currentUser = FetchUserInfo(CurrentUserName, userToken);
@@ -237,10 +208,18 @@ const loadFeed=(p,n)=>{
                                 // if(Oldposts.includes(posts)){
                                 for (let i = 0; i < posts.length; i++) {
                                     if (!Oldposts.includes(posts[i]) ){
-                                        console.log(posts[i]);
+
+                                        document.getElementById("note").style.display="block";
+                                        // setTimeout(document.getElementById("note").style.display="none", 3000);
+                                        //trying to use toast of bootstrap but doesn't work.
+                                        // console.log(document.getElementsByClassName("toast")[0]);
+
+                                        // $(document).ready(function(){
+                                        //
+                                        //     $('.toast').toast('show');
+                                        //
+                                        // });
                                     }
-
-
                                 }
 
                                 Oldposts=posts;
@@ -249,7 +228,10 @@ const loadFeed=(p,n)=>{
                         })
                     })},5000);
 
+document.getElementById("knew").addEventListener("click", ()=>{
+    document.getElementById("note").style.display="none";
 
+})
 
 
                 //////
@@ -285,22 +267,28 @@ SettingBtn.addEventListener("click",()=>{
 
 
 
-    const emailDiv= document.getElementById("ChangeEmail");
-    validEmail(emailDiv);
-
-    const passwordDiv=document.getElementById("ChangePass");
-    ValidPassword(passwordDiv);
-
-
-    const pass2=document.getElementById("ChangePass2");
-    if(passwordDiv.value!==pass2.value){
-        alert("Please check your two passwords, they are not the same.")
-    }
 
 
 
 
     document.getElementById("UpdateBTN").addEventListener("click",()=>{
+        const emailDiv= document.getElementById("ChangeEmail");
+        if(!validEmail(emailDiv)){
+            return
+        }
+
+        const passwordDiv=document.getElementById("ChangePass");
+        if(!ValidPassword(passwordDiv)){
+            return
+        }
+
+
+
+        const pass2=document.getElementById("ChangePass2");
+        if(passwordDiv.value!==pass2.value){
+            alert("Please check your two passwords, they are not the same.")
+        }
+
 
         const SettingBody = {
             "email":emailDiv.value,
@@ -330,21 +318,29 @@ SettingBtn.addEventListener("click",()=>{
         }).then(window.location.reload())
     })
 })
+
+
+
+
 const validEmail=(emailDiv)=>{
-    emailDiv.addEventListener("change",()=>{
+    // emailDiv.addEventListener("change",()=>{
         const EmailReg= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
         if(!EmailReg.test(emailDiv.value)){
+
             alert("Please input Email address with correct format(e.g. xxxxx@xxx.com)");
+            return false
+        }else {
+            return true
         }
-    })
+    // })
 }
 
 
 
 
 const ValidPassword=(PasswordDiv)=>{
-    PasswordDiv.addEventListener("change",()=>{
+    // PasswordDiv.addEventListener("change",()=>{
         const PassReg= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
         // password should only contain 6 characters from letter and digit;
         // and at least one digit and one lower case and one upper case;
@@ -352,42 +348,14 @@ const ValidPassword=(PasswordDiv)=>{
         if(!PasswordDiv.value.match(PassReg)){
             alert("password should includes 6 characters from letter and digit;\n" +
                 "and needs to contain at least one digit and one lower case and one upper case.");
+            return false
+        }else {
+            return true
+
         }
-    })
-
 }
 
 
-
-
-function notification(CurrentUserName, userToken) {
-    // // new Promise(resolve => {
-    //     setInterval(function () {
-    //         const promise=[];
-    //
-    //         const currentUser = FetchUserInfo(CurrentUserName, userToken);
-    //         currentUser.then(data => {
-    //             data.json().then(res => {
-    //                 const followingList = res["following"];
-    //                 const len = followingList.length
-    //
-    //                 for (let i = 0; i < len; i++) {
-    //                     const result = FetchInfoViaID(followingList[i], userToken)
-    //                     promise.push(...result["posts"]);//... makes array=>to be a list
-    //                     // Promise.all(promise).then(res => {
-    //                     //     Promise.all(res.map(eachRes => eachRes.json())).then(
-    //                     //         data => console.log(data)
-    //
-    //                 }console.log(promise);
-    //                 for(let n=0;n<promise.length;n++){
-    //
-    //                 }
-    //
-    //
-    //
-    //             })
-    //         })},5000);
-}
 
 
 
@@ -395,11 +363,7 @@ function notification(CurrentUserName, userToken) {
 
 const InfiniteScroll=()=>{
     console.log(window.innerHeight);
-    console.log()
 
-    // if(!document.getElementsByClassName("newDivPostClass")[0]) {
-    //     return;
-    // }
 
     if(window.pageYOffset+window.innerHeight+2500<=document.body.scrollHeight){
         return;
@@ -443,37 +407,8 @@ document.getElementById("CreateBtn").addEventListener("click" , ()=> {
 
 
 
-// const validEmail=(emailDiv)=>{
-//     emailDiv.addEventListener("change",()=>{
-//         const EmailReg= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//         //https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-//         if(!EmailReg.test(emailDiv.value)){
-//             alert("Please input Email address with correct format(e.g. xxxxx@xxx.com)");
-//         }
-//     })
-// }
-//
-//
-//
-//
-// const ValidPassword=(PasswordDiv)=>{
-//     PasswordDiv.addEventListener("change",()=>{
-//         const PassReg= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
-//         // password should only contain 6 characters from letter and digit;
-//         // and at least one digit and one lower case and one upper case;
-//         //https://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe
-//         if(!PasswordDiv.value.match(PassReg)){
-//             alert("password should includes 6 characters from letter and digit;\n" +
-//                 "and needs to contain at least one digit and one lower case and one upper case.");
-//         }
-//     })
-//
-// }
-
-
-
-
 document.getElementById("SignUpBtn").addEventListener("click",()=> {
+    console.log("yes")
     const pass1Sign = document.getElementById("passSign");
     const pass2Sign = document.getElementById("ConPassSign");
     const email=document.getElementById("EmailAdd");
