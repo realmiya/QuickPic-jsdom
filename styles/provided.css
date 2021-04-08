@@ -6,7 +6,41 @@ html, body {
     background-color: #fafafa;
     height: 100%;
     font-family: -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    /*font-size:14px; font-size:.875rem; !*if browser can not support rem, it will user 14px*! but in bootstrap it already has this property*/
 }
+
+/*.body{*/
+/*    max-width: 100vw;*/
+/*}*/
+.newDivPostClass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 10px 5px 5px lightgray;
+    margin:15px;
+    padding: 15px;
+    border-radius: 20px;
+}
+.authorDivFlex{
+    display:flex;
+}
+
+
+.Who{
+    flex:1;
+    justify-content: center;
+
+}
+.Time{
+    flex:1;
+    justify-content: center;
+
+}
+
+
 
 .banner {
     display: flex;
@@ -46,3 +80,80 @@ footer {
 }
 
 /* Add your styles here */
+.modalProfile {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    /*background:lightgreen;*/
+}
+
+.modalEditPost {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    /*background:lightgreen;*/
+}
+
+/*.my-class{*/
+/*    font-size:80px;*/
+/*}*/
+
+.modalContent {
+    background-color:whitesmoke;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*.BoldPart{*/
+/*    font-weight: bold;*/
+/*}*/
+.Describe,.CommentPart,.LikePart{
+    border-style:solid;
+    border-color:paleturquoise;
+    margin:15px;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.NumberTitle{
+    background-color: skyblue;
+    color:white;
+    margin:15px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+/*.BigName{*/
+/*    font-size:50px;*/
+/*}*/
+
+

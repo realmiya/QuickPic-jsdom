@@ -35,11 +35,11 @@
         </header>
 
         <main role="main" class="container">
-            <div id="loginScreen" style="background:#f1f1b8">
+            <div id="loginScreen" style="background:yellow;">
                 <h2>Please login.</h2>
                 Username:<input type="text" id="username" /><br/>
                 Password:<input type="text" id="password" /><br/>
-
+<!--                Confirm Your Password:<input type=text" id="ConPass" /><br/>-->
                 <button class="btn btn-primary" id="loginButton">Login</button>
                 <button class="btn btn-primary" id="CreateBtn">Create an account </button>
             </div>
@@ -82,33 +82,27 @@
             </section>
 
 
-            <div id="CreateActScreen" style="display:none;background:#fee;">
-                <form class="form-horizontal" role="form">
-                    <h2>Let's Create an account in QuickPic!</h2>
-                    <div class="form-group">
-                        <div class="col-sm-10">
-                            <label >Username:</label>
-                            <input class="form-control" type="text" id="userNameSign" /><br/>
-                        </div>
-                        <div class="col-sm-10 my-class">
-                            <label >Password:</label>
-                            <input class="form-control" type="text" id="passSign" /><br/>
-                        </div>
+            <div class="form-horizontal" id="CreateActScreen" style="display:none;background:pink;">
 
-                        <div class="col-sm-10">
-                            <label >Confirm Your Password:</label>
-                            <input class="form-control" type="text" id="ConPassSign" /><br/>
-                        </div>
-                        <div class="col-sm-10">
-                            <label >Your Email address:</label>
-                            <input class="form-control" type="text" id="EmailAdd" /><br/>
-                        </div>
-                        <div class="col-sm-10">
-                            <label >Your Full Name:</label>
-                            <input class="form-control" type="text" id="FName" /><br/>
-                        </div>
+                <h2>Let's Create an account in QuickPic!</h2>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Username:</label>
+                    <input class="form-control" type="text" id="userNameSign" /><br/>
+
+                    <label class="col-sm-2 control-label">Password:</label>
+                    <input class="form-control" type="text" id="passSign" /><br/>
+
+                    <label class="col-sm-2 control-label">Confirm Your Password:</label>
+                    <input class="form-control" type="text" id="ConPassSign" /><br/>
+
+                    <label class="col-sm-2 control-label">Your Email address:</label>
+                    <input class="form-control" type="text" id="EmailAdd" /><br/>
+
+                    <label class="col-sm-2 control-label">Your Full Name:</label>
+                    <input class="form-control" type="text" id="FName" /><br/>
                     </div>
-                </form>
+
+
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default" id="SignUpBtn" >Sign up </button>
                 </div>
@@ -163,7 +157,7 @@
         <footer>
             <p>&copy; Quickpic</p>
         </footer>
-<!--        <script type="module" src="src/signUp.js"></script>-->
+        <script type="module" src="src/signUp.js"></script>
         <script type="module" src="src/main.js"></script>
 
 
