@@ -88,8 +88,7 @@ document.getElementById('ImageUpload').addEventListener("change",()=>{
     const file = document.querySelector('input[type=file]').files[0];
     const url= fileToDataUrl(file);// console.log(url); it is pending, so we need .then() get urlData to use.
     url.then(urlData=>{
-        const
-            Data=urlData.split(",")[1];
+        const Data=urlData.split(",")[1];
         const StoryBody={
             "description_text":document.getElementById("description_text").value,
             "src":Data,}
@@ -158,14 +157,12 @@ const loadFeed=(p,n)=>{
                     PostTime.className="Time";
                     newDivWho.className="Who";
                     newDivPost.appendChild(AuthorTitle);
-
                     newDivPost.appendChild(authorDiv);//authorDiv包着两，加入newDivPost
 
                     // post Owner's profile
                     newDivWho.addEventListener("click",function(){
                         showProfile(newDivWho,userToken,CurrentUserName);
                     });
-
 
                     const newDivDisc = document.createElement("div");
                     newDivDisc.className="Describe";
@@ -193,7 +190,6 @@ const loadFeed=(p,n)=>{
                             const len = followingList.length
                             Promise.all(followingList.map(id=>{
                                 return FetchInfoViaID(id, userToken).then(data=>data.json())
-
                             })).then(data=> {
                                 console.log(data)
                                 // posts.push(data)
@@ -203,17 +199,14 @@ const loadFeed=(p,n)=>{
                                 console.log(posts)
                                 if(Oldposts.length===0){
                                     Oldposts.push(...posts)
-
                                 }
                                 // if(Oldposts.includes(posts)){
                                 for (let i = 0; i < posts.length; i++) {
                                     if (!Oldposts.includes(posts[i]) ){
-
                                         document.getElementById("note").style.display="block";
                                         // setTimeout(document.getElementById("note").style.display="none", 3000);
                                         //trying to use toast of bootstrap but doesn't work.
                                         // console.log(document.getElementsByClassName("toast")[0]);
-
                                         // $(document).ready(function(){
                                         //
                                         //     $('.toast').toast('show');
@@ -221,16 +214,12 @@ const loadFeed=(p,n)=>{
                                         // });
                                     }
                                 }
-
                                 Oldposts=posts;
                             });
-
                         })
                     })},5000);
-
 document.getElementById("knew").addEventListener("click", ()=>{
     document.getElementById("note").style.display="none";
-
 })
 
 

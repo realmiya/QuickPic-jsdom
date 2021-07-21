@@ -374,6 +374,7 @@ export const showProfile=(username,userToken,CurrentUserName)=>{
                                 const DeletePostButton=document.createElement("button");
                                 DeletePostButton.innerText="Delete This Post";
                                 DeletePostButton.addEventListener("click", ()=>{
+
                                     const DelPostID=postPromiseResData[n]["id"];
                                     const postDeleteFetch=fetch("http://127.0.0.1:5000/post/?id="+DelPostID,{
                                             method:"DELETE",
@@ -426,7 +427,7 @@ export function LikePartFunction(ResData,n, newDivPost,userToken,CurrentUserName
 
     const likerListPart=document.createElement("div");
     LikePart.appendChild(likerListPart);
-    
+
 
     if(lenOflikers!==0) {
         // newDivLikDATA.className= "btn btn-primary";
